@@ -67,3 +67,4 @@ typings/
 lint-reports
 
 dist/
+/packages/core/src/protocols/rsk_1
