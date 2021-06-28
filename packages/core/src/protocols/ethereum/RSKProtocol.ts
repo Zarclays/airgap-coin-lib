@@ -1,4 +1,4 @@
-import { NetworkType, ProtocolBlockExplorer } from '../..'
+import { NetworkType } from '../..'
 import { BaseEthereumProtocol } from './BaseEthereumProtocol'
 import { EtherscanInfoClient } from './clients/info-clients/EtherscanInfoClient'
 import { AirGapNodeClient } from './clients/node-clients/AirGapNodeClient'
