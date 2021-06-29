@@ -13,6 +13,8 @@ import { CosmosDelegationActionType, CosmosProtocol } from './protocols/cosmos/C
 import { GenericERC20 } from './protocols/ethereum/erc20/GenericERC20'
 import { EthereumClassicProtocol } from './protocols/ethereum/EthereumClassicProtocol'
 import { EthereumRopstenProtocol } from './protocols/ethereum/EthereumRopstenProtocol'
+import { RSKProtocol } from './protocols/ethereum/RSKProtocol'
+import { RSKTestnetProtocol } from './protocols/ethereum/RSKTestnetProtocol'
 import { GroestlcoinProtocol } from './protocols/groestlcoin/GroestlcoinProtocol'
 import { GroestlcoinTestnetProtocol } from './protocols/groestlcoin/GroestlcoinTestnetProtocol'
 import {
@@ -278,7 +280,9 @@ export {
   EthereumERC20ProtocolConfig,
   EthereumERC20ProtocolOptions,
   EthereumAddress,
-  RawEthereumTransaction
+  RawEthereumTransaction,
+  RSKProtocol,
+  RSKTestnetProtocol
 }
 
 // Groestlcoin

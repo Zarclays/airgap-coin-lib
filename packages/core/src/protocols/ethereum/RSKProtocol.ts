@@ -4,7 +4,7 @@ import { EtherscanInfoClient } from './clients/info-clients/EtherscanInfoClient'
 import { AirGapNodeClient } from './clients/node-clients/AirGapNodeClient'
 import { EthereumProtocolNetwork, EthereumProtocolNetworkExtras, EthereumProtocolOptions, EtherscanBlockExplorer } from './EthereumProtocolOptions'
 
-export class RskProtocol extends BaseEthereumProtocol<AirGapNodeClient, EtherscanInfoClient> {
+export class RSKProtocol extends BaseEthereumProtocol<AirGapNodeClient, EtherscanInfoClient> {
   constructor() {
     // we probably need another network here, explorer is ok
     super(
