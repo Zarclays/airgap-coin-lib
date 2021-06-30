@@ -1,6 +1,6 @@
 {
   "name": "@airgap/coinlib-core",
-  "version": "0.11.7",
+  "version": "0.11.8",
   "description": "The @airgap/coinlib-core is a protocol agnostic library to prepare, sign and broadcast cryptocurrency transactions.",
   "keywords": [
     "airgap",
@@ -26,7 +26,7 @@
     "registry": "http://localhost:4873"
   },
   "scripts": {
-    "build": "node scripts/node-module-es-module-interop.js && tsc && node scripts/copy-files-after-build.js && node scripts/make-ts-declaration-files-backwards-compatible.js",
+    "build": "node scripts/node-module-es-module-interop.js && tsc &&  node scripts/check_dependencies.js && node scripts/copy-files-after-build.js && node scripts/make-ts-declaration-files-backwards-compatible.js ",
     "build-scripts": "tsc scripts/*.ts",
     "lint": "tslint -c ./tslint.json --project ./tsconfig.json --format stylish --fix",
     "lint:prettier": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
