@@ -7,7 +7,9 @@ export enum MainProtocolSymbols {
   GRS = 'grs',
   COSMOS = 'cosmos',
   POLKADOT = 'polkadot',
-  KUSAMA = 'kusama'
+  KUSAMA = 'kusama',
+  RSK = 'rsk'
+
 }
 
 export enum SubProtocolSymbols {

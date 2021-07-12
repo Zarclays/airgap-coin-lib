@@ -26,8 +26,9 @@
     "registry": "http://localhost:4873"
   },
   "scripts": {
-    "build": "node scripts/node-module-es-module-interop.js && tsc &&  node scripts/check_dependencies.js && node scripts/copy-files-after-build.js && node scripts/make-ts-declaration-files-backwards-compatible.js ",
+    "build": "node scripts/node-module-es-module-interop.js && tsc  && node scripts/copy-files-after-build.js && node scripts/make-ts-declaration-files-backwards-compatible.js ",
     "build-scripts": "tsc scripts/*.ts",
+    "gen-scheme": "./scripts/generate-schemas.sh",
     "lint": "tslint -c ./tslint.json --project ./tsconfig.json --format stylish --fix",
     "lint:prettier": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
     "lint-ci": "tslint -t json -o ../../lint-reports/core.json --project . || true",

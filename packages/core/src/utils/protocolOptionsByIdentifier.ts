@@ -3,7 +3,7 @@ import { Domain } from '../errors/coinlib-error'
 import { AeternityProtocolNetwork, AeternityProtocolOptions } from '../protocols/aeternity/AeternityProtocolOptions'
 import { BitcoinProtocolNetwork, BitcoinProtocolOptions } from '../protocols/bitcoin/BitcoinProtocolOptions'
 import { CosmosProtocolNetwork, CosmosProtocolOptions } from '../protocols/cosmos/CosmosProtocolOptions'
-import { EthereumProtocolNetwork, EthereumProtocolOptions } from '../protocols/ethereum/EthereumProtocolOptions'
+import { EthereumProtocolNetwork, EthereumProtocolNetworkExtras, EthereumProtocolOptions, EtherscanBlockExplorer } from '../protocols/ethereum/EthereumProtocolOptions'
 import { GroestlcoinProtocolNetwork, GroestlcoinProtocolOptions } from '../protocols/groestlcoin/GroestlcoinProtocolOptions'
 import { KusamaProtocolNetwork, KusamaProtocolOptions } from '../protocols/substrate/implementations/KusamaProtocolOptions'
 import { PolkadotProtocolNetwork, PolkadotProtocolOptions } from '../protocols/substrate/implementations/PolkadotProtocolOptions'
@@ -37,6 +37,21 @@ const getProtocolOptionsByIdentifier: (identifier: ProtocolSymbols, network?: Pr
     case MainProtocolSymbols.ETH:
     case SubProtocolSymbols.ETH_ERC20_XCHF:
     case SubProtocolSymbols.ETH_ERC20:
+      return new EthereumProtocolOptions(network ? (network as EthereumProtocolNetwork) : new EthereumProtocolNetwork())
+    case MainProtocolSymbols.RSK:
+      return new EthereumProtocolOptions(
+        new EthereumProtocolNetwork(
+          "RSK Mainnet",
+          NetworkType.MAINNET,
+          'https://public-node.rsk.co',
+          new EtherscanBlockExplorer("https://explorer.rsk.co"),
+          new EthereumProtocolNetworkExtras(30)
+        )
+        // ,
+        // new  RskProtocoloConfig() 
+
+
+      )
       return new EthereumProtocolOptions(network ? (network as EthereumProtocolNetwork) : new EthereumProtocolNetwork())
     case MainProtocolSymbols.GRS:
       return new GroestlcoinProtocolOptions(network ? (network as GroestlcoinProtocolNetwork) : new GroestlcoinProtocolNetwork())
