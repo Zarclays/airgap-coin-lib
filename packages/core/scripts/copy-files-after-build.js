@@ -150,19 +150,30 @@ var findFilesOnLevel = function (base) {
         case 3:
           if (file.endsWith('json') || file.endsWith('js')) {
             files.push(path)
+            const fileSeparator = path_1.sep == '\\' ? '/' : '/'
             path_1
               .dirname(path)
-              .split(path_1.sep)
+              .split(fileSeparator)
               .reduce(function (prevPath, folder) {
-                var currentPath = path_1.join(prevPath, folder, path_1.sep)
+                var currentPath = path_1.join(prevPath, folder, fileSeparator)
                 if (currentPath === 'src/') {
                   return 'dist/'
                 }
+                // const distFolder = 'dist/' + currentPath.substring(4);
+                // if (!fs_1.existsSync(distFolder)) {
+
+                //   fs_1.mkdirSync(distFolder)
+                // }
                 if (!fs_1.existsSync(currentPath)) {
-                  fs_1.mkdirSync(currentPath)
+                  fs_1.mkdirSync(currentPath, { recursive: true })
                 }
                 return currentPath
               }, '')
+
+            const outDir = path_1.dirname(path.replace('./src', './dist'))
+            if (!fs_1.existsSync(outDir)) {
+              fs_1.mkdirSync(outDir, { recursive: true })
+            }
             console.log('Copying file', path.replace('./src', './dist'))
             fs_1.copyFileSync(path, path.replace('./src', './dist'))
           }

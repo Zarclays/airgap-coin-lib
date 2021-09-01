@@ -1,13 +1,14 @@
 {
-  "name": "@airgap/coinlib-core",
+  "name": "@zarclays/zgap-coinlib-core",
   "version": "0.11.9",
-  "description": "The @airgap/coinlib-core is a protocol agnostic library to prepare, sign and broadcast cryptocurrency transactions.",
+  "description": "The @zarclays/zgap-coinlib-core is a protocol agnostic library to prepare, sign and broadcast cryptocurrency transactions.",
   "keywords": [
-    "airgap",
+    "zgap",
     "blockchain",
     "crypto",
     "bitcoin",
     "ethereum",
+    "bsc",
     "aeternity",
     "groestlcoin",
     "tezos",
@@ -16,10 +17,10 @@
     "kusama"
   ],
   "license": "MIT",
-  "homepage": "https://www.airgap.it",
+  "homepage": "https://www.zarclays.com",
   "repository": {
     "type": "git",
-    "url": "https://github.com/airgap-it/airgap-coin-lib"
+    "url": "https://github.com/zarclays/airgap-coin-lib"
   },
   "publishConfig": {
     "access": "public"
@@ -36,7 +37,7 @@
     "test-legacy": "npm run build && mocha --full-trace --timeout 40000 ./test/**/**.spec.js",
     "browserify": "browserify ./dist/index.js -s airgapCoinLib > ./dist/airgap-coinlib-core.min.js"
   },
-  "author": "Papers GmbH <contact@papers.ch> (https://papers.ch)",
+  "author": "Zarclays <info@zarclays.com> (https://zgap.zarclays.com)",
   "dependencies": {
     "@airgap/sapling-wasm": "0.0.5",
     "@polkadot/util": "2.0.1",
@@ -91,6 +92,5 @@
     "report-dir": "../../coverage/core",
     "sourceMap": true,
     "instrument": true
-  },
-  "gitHead": "8e8feb6788204501b7173aa825f5456c2a5f185b"
+  }
 }

@@ -11,14 +11,19 @@ const findFilesOnLevel = async (base: string) => {
       files.push(...(await findFilesOnLevel(path)))
     } else if ((file as any).endsWith('json') || (file as any).endsWith('js')) {
       files.push(path)
+      const fileSeparator = sep == '\\' ? '/' : '/'
       dirname(path)
-        .split(sep)
+        .split(fileSeparator)
         .reduce((prevPath, folder) => {
-          const currentPath = join(prevPath, folder, sep)
+          const currentPath = join(prevPath, folder, fileSeparator)
           if (currentPath === 'src/') {
             return 'dist/'
           }
+          // const distFolder = 'dist/' + currentPath.substring(4);
+          // if (!existsSync(distFolder)) {
 
+          //   mkdirSync(distFolder)
+          // }
           if (!existsSync(currentPath)) {
             mkdirSync(currentPath)
           }
@@ -26,8 +31,11 @@ const findFilesOnLevel = async (base: string) => {
           return currentPath
         }, '')
 
+      const outDir = dirname(path.replace('./src', './dist'))
+      if (!existsSync(outDir)) {
+        mkdirSync(outDir, { recursive: true })
+      }
       console.log('Copying file', path.replace('./src', './dist'))
-
       copyFileSync(path, path.replace('./src', './dist'))
     }
   }

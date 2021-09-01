@@ -1,12 +1,12 @@
 {
-  "name": "airgap-coin-lib",
-  "version": "0.0.0",
-  "author": "Papers GmbH <contact@papers.ch> (https://papers.ch)",
+  "name": "@zarclays/zgap-coin-lib",
+  "version": "0.0.1",
+  "author": "Zarclays <info@zarclays.com> (https://zgap.zarclays.com)",
+  "homepage": "https://www.zgap.zarclays.com",
   "license": "MIT",
-  "homepage": "https://www.airgap.it",
   "repository": {
     "type": "git",
-    "url": "https://github.com/airgap-it/airgap-coin-lib"
+    "url": "https://github.com/zarclays/zgap-coin-lib"
   },
   "private": true,
   "scripts": {
@@ -75,5 +75,6 @@
     "tslint": "5.20.1",
     "tslint-config-prettier": "1.18.0",
     "tslint-config-valorsoft": "2.2.1"
-  }
+  },
+  "dependencies": {}
 }
