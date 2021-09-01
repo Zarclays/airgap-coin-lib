@@ -1,11 +1,11 @@
-# AirGap Coin Library
+# ZGap Coin Library
 
-[![npm](https://img.shields.io/npm/v/airgap-coin-lib.svg?colorB=brightgreen)](https://www.npmjs.com/package/airgap-coin-lib)
-[![documentation](https://img.shields.io/badge/documentation-online-brightgreen.svg)](https://airgap-it.github.io/airgap-coin-lib/)
-[![build](https://img.shields.io/travis/airgap-it/airgap-coin-lib.svg)](https://travis-ci.org/airgap-it/airgap-coin-lib/)
-[![codecov](https://img.shields.io/codecov/c/gh/airgap-it/airgap-coin-lib.svg)](https://codecov.io/gh/airgap-it/airgap-coin-lib/)
+[![npm](https://img.shields.io/npm/v/airgap-coin-lib.svg?colorB=brightgreen)](https://www.npmjs.com/package/@zarclays/zgap-coin-lib)
+[![documentation](https://img.shields.io/badge/documentation-online-brightgreen.svg)](https://zarclays.github.io/zgap-coin-lib/)
+[![build](https://img.shields.io/travis/airgap-it/airgap-coin-lib.svg)](https://travis-ci.org/zarclays/zgap-coin-lib/)
+[![codecov](https://img.shields.io/codecov/c/gh/zarclays/airgap-coin-lib.svg)](https://codecov.io/gh/zarclays/zgap-coin-lib/)
 
-The `airgap-coin-lib` is a protocol-agnostic library that allows easy handling of the most important tasks relating cryptocurrencies and blockchains.
+The `zgap-coin-lib` is a protocol-agnostic library that allows easy handling of the most important tasks relating cryptocurrencies and blockchains.
 
 It implements operations such as preparing, signing and broadcasting transactions for a range of protocols.
 
@@ -61,7 +61,7 @@ Currently we support for Ethereum-like (Account-based) protocols:
 
 ### Delegation
 
-There is a different interface that can be implemented if the protocol supports delegation. The delegation flow usually requires some changes in the user interface of the AirGap Wallet as well.
+There is a different interface that can be implemented if the protocol supports delegation. The delegation flow usually requires some changes in the user interface of the ZGap Wallet as well.
 
 ### Inter App Communication
 
@@ -94,7 +94,7 @@ Build dependencies get installed using `npm install`.
 ### Clone and Run
 
 ```
-$ git clone https://github.com/airgap-it/airgap-coin-lib.git
+$ git clone https://github.com/zarclays/zgap-coin-lib.git
 $ cd airgap-coin-lib
 $ npm install
 ```
