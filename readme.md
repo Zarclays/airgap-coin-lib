@@ -112,6 +112,12 @@ To remove the test dependencies and clean up the `package.json` and `package-loc
 $ npm run install-build-dependencies
 ```
 
+#### NPM Publish
+
+```
+npx lerna publish from-package --contents dist --yes
+```
+
 ### Contributing
 
 We welcome contributions from the community. Simple readme updates or bugfixes can be addressed with a PR directly.
