@@ -236,6 +236,13 @@ import {
 } from './protocols/substrate/moonbeam/moonriver/MoonriverProtocolOptions'
 import { MoonbeamProtocol } from './protocols/substrate/moonbeam/MoonbeamProtocol'
 
+import { RSKProtocol, RSKTestnetProtocol } from './protocols/ethereum/RSKProtocol'
+import { RskProtocolConfig, RskTestnetProtocolConfig } from './protocols/ethereum/RskProtocolOptions'
+import { BSCProtocol, BSCTestnetProtocol } from './protocols/ethereum/BSCProtocol'
+import { BSCProtocolConfig, BSCTestnetProtocolConfig } from './protocols/ethereum/BSCProtocolOptions'
+import { CeloProtocol, CeloTestnetProtocol } from './protocols/ethereum/CeloProtocol'
+import { CeloProtocolConfig, CeloTestnetProtocolConfig } from './protocols/ethereum/CeloProtocolOptions'
+
 // tslint:enable:ordered-imports
 
 // Core
@@ -313,7 +320,19 @@ export {
   EthereumERC20ProtocolConfig,
   EthereumERC20ProtocolOptions,
   EthereumAddress,
-  RawEthereumTransaction
+  RawEthereumTransaction,
+  RSKProtocol,
+  RSKTestnetProtocol,
+  RskProtocolConfig,
+  RskTestnetProtocolConfig,
+  BSCProtocolConfig,
+  BSCTestnetProtocolConfig,
+  BSCProtocol,
+  BSCTestnetProtocol,
+  CeloProtocolConfig,
+  CeloTestnetProtocolConfig,
+  CeloProtocol,
+  CeloTestnetProtocol
 }
 
 // Groestlcoin

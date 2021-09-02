@@ -1,9 +1,12 @@
+import { BSCProtocolConfig, CeloProtocolConfig } from '..'
 import { NotFoundError } from '../errors'
 import { Domain } from '../errors/coinlib-error'
 import { AeternityProtocolNetwork, AeternityProtocolOptions } from '../protocols/aeternity/AeternityProtocolOptions'
 import { BitcoinProtocolNetwork, BitcoinProtocolOptions } from '../protocols/bitcoin/BitcoinProtocolOptions'
 import { CosmosProtocolNetwork, CosmosProtocolOptions } from '../protocols/cosmos/CosmosProtocolOptions'
 import { EthereumProtocolNetwork, EthereumProtocolOptions } from '../protocols/ethereum/EthereumProtocolOptions'
+import { RskProtocolConfig } from '../protocols/ethereum/RskProtocolOptions'
+
 import { GroestlcoinProtocolNetwork, GroestlcoinProtocolOptions } from '../protocols/groestlcoin/GroestlcoinProtocolOptions'
 import { KusamaProtocolNetwork, KusamaProtocolOptions } from '../protocols/substrate/kusama/KusamaProtocolOptions'
 import { MoonbaseProtocolNetwork, MoonbaseProtocolOptions } from '../protocols/substrate/moonbeam/moonbase/MoonbaseProtocolOptions'
@@ -104,6 +107,29 @@ const getProtocolOptionsByIdentifier: (identifier: ProtocolSymbols, network?: Pr
         network ? (network as TezosProtocolNetwork) : new TezosProtocolNetwork(),
         new TezosStakerProtocolConfig()
       )
+
+    case MainProtocolSymbols.RSK:
+      // return new EthereumProtocolOptions(
+      //   new EthereumProtocolNetwork(
+      //     "RSK Mainnet",
+      //     NetworkType.MAINNET,
+      //     'https://public-node.rsk.co',
+      //     new EtherscanBlockExplorer("https://explorer.rsk.co"),
+      //     new EthereumProtocolNetworkExtras(30)
+      //   )
+      //   // ,
+      //   // new  RskProtocoloConfig()
+
+      // )
+      // console.log('prot opti by id: ', network)
+      return new EthereumProtocolOptions(network ? (network as EthereumProtocolNetwork) : new RskProtocolConfig())
+
+    case MainProtocolSymbols.CELO:
+    case SubProtocolSymbols.CELO_ERC20:
+      return new EthereumProtocolOptions(network ? (network as EthereumProtocolNetwork) : new CeloProtocolConfig())
+    case MainProtocolSymbols.BSC:
+    case SubProtocolSymbols.BSC_BEP20:
+      return new EthereumProtocolOptions(network ? (network as EthereumProtocolNetwork) : new BSCProtocolConfig())
 
     default:
       // Maybe we get an identifier of a sub-protocol that is not in the known list. In that case, get the options of the parent

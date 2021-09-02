@@ -1,19 +1,16 @@
-# AirGap Coin Library
+# ZGap Coin Library
 
-[![npm](https://img.shields.io/npm/v/airgap-coin-lib.svg?colorB=brightgreen)](https://www.npmjs.com/package/airgap-coin-lib)
-[![documentation](https://img.shields.io/badge/documentation-online-brightgreen.svg)](https://airgap-it.github.io/airgap-coin-lib/)
-[![build](https://img.shields.io/travis/airgap-it/airgap-coin-lib.svg)](https://travis-ci.org/airgap-it/airgap-coin-lib/)
-[![codecov](https://img.shields.io/codecov/c/gh/airgap-it/airgap-coin-lib.svg)](https://codecov.io/gh/airgap-it/airgap-coin-lib/)
+[![npm](https://img.shields.io/npm/v/@zarclays/zgap-coin-lib.svg?colorB=brightgreen)](https://www.npmjs.com/package/@zarclays/zgap-coin-lib)
 
-The `airgap-coin-lib` is a protocol-agnostic library that allows easy handling of the most important tasks relating cryptocurrencies and blockchains.
+The `zgap-coin-lib` is a protocol-agnostic library that allows easy handling of the most important tasks relating cryptocurrencies and blockchains.
 
 It implements operations such as preparing, signing and broadcasting transactions for a range of protocols.
 
-The library consists of a shared interface for all implemented protocols. This is especially useful in the context of AirGap because methods are designed to support offline key management and signing. The following core operations are specified:
+The library consists of a shared interface for all implemented protocols. This is especially useful in the context of ZGap because methods are designed to support offline key management and signing. The following core operations are specified:
 
-- `prepareTransaction` - This is done on AirGap Wallet (online) side. Either a public key or extended public key is used and will fetch the required information from the network.
-- `signTransaction` - This is done in AirGap Vault (offline) side. The output of "prepareTransaction" is the input for this method (hence the output of "prepareTransaction" is transferred via URL scheme (same-device) or QR code (2-device-setup)).
-- `broadcastTransaction` - This is done in AirGap Wallet (online) side. The output of "signTransaction" is the input for this method (hence the output of "signTransaction" is transferred via URL scheme (same-device) or QR code (2-device-setup)).
+- `prepareTransaction` - This is done on ZGap Wallet (online) side. Either a public key or extended public key is used and will fetch the required information from the network.
+- `signTransaction` - This is done in ZGap Vault (offline) side. The output of "prepareTransaction" is the input for this method (hence the output of "prepareTransaction" is transferred via URL scheme (same-device) or QR code (2-device-setup)).
+- `broadcastTransaction` - This is done in ZGap Wallet (online) side. The output of "signTransaction" is the input for this method (hence the output of "signTransaction" is transferred via URL scheme (same-device) or QR code (2-device-setup)).
 
 ## Supported Protocols
 
@@ -41,6 +38,9 @@ Currently supported are:
 - Groestlcoin
 - Cosmos
 - Polkadot
+- RSK
+- Celo
+- BSC
 - Kusama
 
 ## Features
@@ -61,7 +61,7 @@ Currently we support for Ethereum-like (Account-based) protocols:
 
 ### Delegation
 
-There is a different interface that can be implemented if the protocol supports delegation. The delegation flow usually requires some changes in the user interface of the AirGap Wallet as well.
+There is a different interface that can be implemented if the protocol supports delegation. The delegation flow usually requires some changes in the user interface of the ZGap Wallet as well.
 
 ### Inter App Communication
 

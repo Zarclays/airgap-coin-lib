@@ -9,7 +9,10 @@ export enum MainProtocolSymbols {
   POLKADOT = 'polkadot',
   KUSAMA = 'kusama',
   MOONBASE = 'moonbase',
-  MOONRIVER = 'moonriver'
+  MOONRIVER = 'moonriver',
+  RSK = 'rsk',
+  CELO = 'celo',
+  BSC = 'bsc'
 }
 
 export enum SubProtocolSymbols {
@@ -23,7 +26,9 @@ export enum SubProtocolSymbols {
   XTZ_YOU = 'xtz-you',
   XTZ_W = 'xtz-w',
   ETH_ERC20 = 'eth-erc20',
-  ETH_ERC20_XCHF = 'eth-erc20-xchf'
+  ETH_ERC20_XCHF = 'eth-erc20-xchf',
+  CELO_ERC20 = 'celo-erc20',
+  BSC_BEP20 = 'bsc-bep20'
 }
 
 export type ProtocolSymbols = MainProtocolSymbols | SubProtocolSymbols
