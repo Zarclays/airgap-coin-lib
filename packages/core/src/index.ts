@@ -236,7 +236,7 @@ import {
 } from './protocols/substrate/moonbeam/moonriver/MoonriverProtocolOptions'
 import { MoonbeamProtocol } from './protocols/substrate/moonbeam/MoonbeamProtocol'
 
-import { RSKProtocol } from './protocols/ethereum/RSKProtocol'
+import { RSKProtocol, RskProtocolConfig } from './protocols/ethereum/RSKProtocol'
 import { RSKTestnetProtocol } from './protocols/ethereum/RSKTestnetProtocol'
 // tslint:enable:ordered-imports
 
@@ -317,7 +317,8 @@ export {
   EthereumAddress,
   RawEthereumTransaction,
   RSKProtocol,
-  RSKTestnetProtocol
+  RSKTestnetProtocol,
+  RskProtocolConfig
 }
 
 // Groestlcoin
