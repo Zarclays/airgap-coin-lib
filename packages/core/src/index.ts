@@ -236,6 +236,8 @@ import {
 } from './protocols/substrate/moonbeam/moonriver/MoonriverProtocolOptions'
 import { MoonbeamProtocol } from './protocols/substrate/moonbeam/MoonbeamProtocol'
 
+import { RSKProtocol } from './protocols/ethereum/RSKProtocol'
+import { RSKTestnetProtocol } from './protocols/ethereum/RSKTestnetProtocol'
 // tslint:enable:ordered-imports
 
 // Core
@@ -313,7 +315,9 @@ export {
   EthereumERC20ProtocolConfig,
   EthereumERC20ProtocolOptions,
   EthereumAddress,
-  RawEthereumTransaction
+  RawEthereumTransaction,
+  RSKProtocol,
+  RSKTestnetProtocol
 }
 
 // Groestlcoin
