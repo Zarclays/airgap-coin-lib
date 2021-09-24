@@ -13,7 +13,7 @@ import { CeloProtocolConfig, CeloTestnetProtocolConfig } from './CeloProtocolOpt
 
 export class CeloProtocol extends BaseEthereumProtocol<AirGapNodeClient, EtherscanInfoClient> {
   constructor(
-    name = 'Celo',
+    name = 'CELO',
     networkType = NetworkType.MAINNET,
     rpcUrl = 'https://forno.celo.org',
     blockexplorerUrl = 'https://explorer.celo.org',

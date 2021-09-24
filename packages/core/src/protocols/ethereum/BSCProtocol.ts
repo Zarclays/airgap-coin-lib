@@ -13,7 +13,7 @@ import { BSCProtocolConfig, BSCTestnetProtocolConfig } from './BSCProtocolOption
 
 export class BSCProtocol extends BaseEthereumProtocol<AirGapNodeClient, EtherscanInfoClient> {
   constructor(
-    name = 'BNB',
+    name = 'BSC',
     networkType = NetworkType.MAINNET,
     rpcUrl = 'https://bsc-dataseed.binance.org',
     blockexplorerUrl = 'https://bscscan.com',

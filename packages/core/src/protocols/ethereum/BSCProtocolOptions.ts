@@ -9,7 +9,7 @@ import { EthereumProtocolConfig, EthereumProtocolNetworkExtras, EtherscanBlockEx
 export class BSCProtocolConfig extends EthereumProtocolConfig {
   constructor(
     public readonly symbol: string = 'BNB',
-    public readonly name: string = 'BNB',
+    public readonly name: string = 'BSC',
     public readonly marketSymbol: string = 'BNB',
     public readonly identifier = MainProtocolSymbols.BSC,
     // public readonly contractAddress: string,
