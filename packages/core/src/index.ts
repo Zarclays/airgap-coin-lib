@@ -121,21 +121,20 @@ import {
 } from './protocols/groestlcoin/GroestlcoinProtocolOptions'
 import {
   SubstrateProtocolNetworkExtras,
-  PolkascanBlockExplorer,
   SubstrateProtocolConfig,
   SubstrateProtocolNetwork,
   SubstrateProtocolOptions
 } from './protocols/substrate/SubstrateProtocolOptions'
 import {
   KusamaProtocolNetworkExtras,
-  KusamaPolkascanBlockExplorer,
+  KusamaSubscanBlockExplorer,
   KusamaProtocolConfig,
   KusamaProtocolNetwork,
   KusamaProtocolOptions
 } from './protocols/substrate/kusama/KusamaProtocolOptions'
 import {
   PolkadotProtocolNetworkExtras,
-  PolkadotPolkascanBlockExplorer,
+  PolkadotSubscanBlockExplorer,
   PolkadotProtocolConfig,
   PolkadotProtocolNetwork,
   PolkadotProtocolOptions
@@ -177,7 +176,7 @@ import {
 import { TezosUtils } from './protocols/tezos/TezosUtils'
 import { TezosFA2Protocol } from './protocols/tezos/fa/TezosFA2Protocol'
 import { TezosFA1Protocol } from './protocols/tezos/fa/TezosFA1Protocol'
-import { TezosFA12Protocol } from './protocols/tezos/fa/TezosFA12Protocol'
+import { TezosFA1p2Protocol } from './protocols/tezos/fa/TezosFA1p2Protocol'
 import { TezosSaplingProtocol } from './protocols/tezos/sapling/TezosSaplingProtocol'
 import { TezosShieldedTezProtocol } from './protocols/tezos/sapling/TezosShieldedTezProtocol'
 import { ImportAccountAction, ImportAccoutActionContext } from './actions/GetKtAccountsAction'
@@ -218,6 +217,10 @@ import { TezosAddress } from './protocols/tezos/TezosAddress'
 import { IACMessageDefinitionObjectV3 } from './serializer-v3/message'
 import { IACMessages as IACMessagesV2 } from './serializer/message'
 import { IACMessages } from './serializer-v3/message'
+import { bufferFrom } from './utils/buffer'
+import { BitcoinSegwitProtocol } from './protocols/bitcoin/BitcoinSegwitProtocol'
+import { BitcoinSegwitAddress } from './protocols/bitcoin/BitcoinSegwitAddress'
+import { RawBitcoinSegwitTransaction } from './serializer-v3/types'
 import { MoonbaseProtocol } from './protocols/substrate/moonbeam/moonbase/MoonbaseProtocol'
 import { MoonriverProtocol } from './protocols/substrate/moonbeam/moonriver/MoonriverProtocol'
 import {
@@ -235,6 +238,13 @@ import {
   MoonriverSubscanBlockExplorer
 } from './protocols/substrate/moonbeam/moonriver/MoonriverProtocolOptions'
 import { MoonbeamProtocol } from './protocols/substrate/moonbeam/MoonbeamProtocol'
+import { SignedBitcoinSegwitTransaction } from './serializer-v3/schemas/definitions/signed-transaction-bitcoin-segwit'
+import { UnsignedBitcoinSegwitTransaction } from './serializer-v3/schemas/definitions/unsigned-transaction-bitcoin-segwit'
+import { TezosUDEFI, TezosUDEFIProtocolConfig } from './protocols/tezos/fa/TezosUDEFI'
+import { TezosCTez, TezosCTezProtocolConfig } from './protocols/tezos/fa/TezosCTez'
+import { TezosPlenty, TezosPlentyProtocolConfig } from './protocols/tezos/fa/TezosPlanty'
+import { TezosWRAP, TezosWRAPProtocolConfig } from './protocols/tezos/fa/TezosWRAP'
+import { TezosQUIPU, TezosQUIPUProtocolConfig } from './protocols/tezos/fa/TezosQUIPU'
 
 import { RSKProtocol, RSKTestnetProtocol } from './protocols/ethereum/RSKProtocol'
 import { RskProtocolConfig, RskTestnetProtocolConfig } from './protocols/ethereum/RskProtocolOptions'
@@ -289,6 +299,9 @@ export {
   BitcoinAddress,
   RawBitcoinTransaction
 }
+
+// Bitcoin Segwit
+export { BitcoinSegwitProtocol, BitcoinSegwitAddress, RawBitcoinSegwitTransaction }
 
 // Cosmos
 export {
@@ -359,18 +372,17 @@ export {
   SubstratePayee,
   SubstrateCryptoClient,
   SubstrateProtocolNetworkExtras,
-  PolkascanBlockExplorer,
   SubstrateProtocolConfig,
   SubstrateProtocolNetwork,
   SubstrateProtocolOptions,
   SubstrateNodeClient,
   KusamaProtocolNetworkExtras,
-  KusamaPolkascanBlockExplorer,
+  KusamaSubscanBlockExplorer as KusamaPolkascanBlockExplorer,
   KusamaProtocolConfig,
   KusamaProtocolNetwork,
   KusamaProtocolOptions,
   PolkadotProtocolNetworkExtras,
-  PolkadotPolkascanBlockExplorer,
+  PolkadotSubscanBlockExplorer,
   PolkadotProtocolConfig,
   PolkadotProtocolNetwork,
   PolkadotProtocolOptions,
@@ -401,7 +413,7 @@ export {
   TezosKtProtocol,
   TezosFAProtocol,
   TezosFA1Protocol,
-  TezosFA12Protocol,
+  TezosFA1p2Protocol,
   TezosFA2Protocol,
   TezosBTC,
   TezosStaker,
@@ -409,8 +421,13 @@ export {
   TezosETHtz as TezosETH,
   TezosUUSD,
   TezosYOU,
+  TezosUDEFI,
   TezosWrapped,
+  TezosWRAP,
   TezosKolibriUSD,
+  TezosCTez,
+  TezosPlenty,
+  TezosQUIPU,
   TezosTransactionResult,
   TezosTransactionCursor,
   BakerInfo,
@@ -434,6 +451,11 @@ export {
   TezosKolibriUSDProtocolConfig,
   TezosStakerProtocolConfig,
   TezosUSDProtocolConfig,
+  TezosCTezProtocolConfig,
+  TezosPlentyProtocolConfig,
+  TezosUDEFIProtocolConfig,
+  TezosWRAPProtocolConfig,
+  TezosQUIPUProtocolConfig,
   TezosFAProtocolOptions,
   TezosFA2ProtocolOptions,
   TezosNetwork,
@@ -463,11 +485,13 @@ export {
   UnsignedTransaction,
   UnsignedAeternityTransaction,
   UnsignedBitcoinTransaction,
+  UnsignedBitcoinSegwitTransaction,
   UnsignedCosmosTransaction,
   UnsignedEthereumTransaction,
   UnsignedTezosTransaction,
   SignedAeternityTransaction,
   SignedBitcoinTransaction,
+  SignedBitcoinSegwitTransaction,
   SignedCosmosTransaction,
   SignedEthereumTransaction,
   SignedTezosTransaction,
@@ -519,3 +543,4 @@ export {
 
 // TODO: Those can be removed when serializer v2 is removed
 export { IACMessages, IACMessagesV2, AccountShareResponseV2 }
+export { bufferFrom } // TODO: Helper method for angular component lib
