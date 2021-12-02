@@ -7,9 +7,10 @@ import { SCALEOptional } from '../../../scale/type/SCALEOptional'
 import { SCALEString } from '../../../scale/type/SCALEString'
 import { SCALEType } from '../../../scale/type/SCALEType'
 import { MetadataV11Call } from '../../v11/module/MetadataV11Call'
-import { MetadataV11Constant } from '../../v11/module/MetadataV11Constants'
+import { MetadataV11Constant } from '../../v11/module/MetadataV11Constant'
 import { MetadataV11Error } from '../../v11/module/MetadataV11Error'
 import { MetadataV11Event } from '../../v11/module/MetadataV11Event'
+
 import { MetadataV13Storage } from './storage/MetadataV13Storage'
 
 export class MetadataV13Module extends SCALEClass {

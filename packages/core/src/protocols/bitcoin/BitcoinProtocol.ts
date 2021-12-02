@@ -3,7 +3,7 @@ import BigNumber from '../../dependencies/src/bignumber.js-9.0.0/bignumber'
 import { mnemonicToSeed } from '../../dependencies/src/bip39-2.5.0/index'
 import * as bitcoinJSMessage from '../../dependencies/src/bitcoinjs-message-2.1.1/index'
 import { IAirGapSignedTransaction } from '../../interfaces/IAirGapSignedTransaction'
-import { AirGapTransactionStatus, IAirGapTransaction } from '../../interfaces/IAirGapTransaction'
+import { AirGapTransactionStatus, AirGapTransactionWarning, IAirGapTransaction } from '../../interfaces/IAirGapTransaction'
 import { SignedBitcoinTransaction } from '../../serializer/schemas/definitions/signed-transaction-bitcoin'
 import { UnsignedTransaction } from '../../serializer/schemas/definitions/unsigned-transaction'
 import { RawBitcoinTransaction } from '../../serializer/types'
@@ -18,7 +18,7 @@ import { BitcoinCryptoClient } from './BitcoinCryptoClient'
 import { BalanceError, InvalidValueError, ConditionViolationError, NetworkError } from '../../errors'
 import { Domain } from '../../errors/coinlib-error'
 
-interface UTXOResponse {
+export interface UTXOResponse {
   txid: string
   vout: number
   value: string
@@ -105,7 +105,7 @@ const DUST_AMOUNT: number = 50
 
 export class BitcoinProtocol implements ICoinProtocol {
   public symbol: string = 'BTC'
-  public name: string = 'Bitcoin'
+  public name: string = 'Bitcoin (Legacy)'
   public marketSymbol: string = 'btc'
 
   public feeSymbol: string = 'btc'
@@ -140,7 +140,8 @@ export class BitcoinProtocol implements ICoinProtocol {
   public standardDerivationPath: string = `m/44'/0'/0'`
 
   public addressIsCaseSensitive: boolean = true
-  public addressValidationPattern: string = '^[13][a-km-zA-HJ-NP-Z1-9]{25,34}$'
+  public addressValidationPattern: string = '^(?:[13]{1}[a-km-zA-HJ-NP-Z1-9]{25,34}|bc1[a-z0-9]{39,59})$'
+
   public addressPlaceholder: string = '1ABC...'
 
   public readonly cryptoClient: BitcoinCryptoClient
@@ -320,6 +321,8 @@ export class BitcoinProtocol implements ICoinProtocol {
       feeCalculator = feeCalculator.minus(new BigNumber(txOut.value))
     }
 
+    const warnings: AirGapTransactionWarning[] = []
+
     return [
       {
         from: transaction.ins.map((obj) => obj.address),
@@ -333,7 +336,8 @@ export class BitcoinProtocol implements ICoinProtocol {
         protocolIdentifier: this.identifier,
         network: this.options.network,
         isInbound: false,
-        transactionDetails: unsignedTx.transaction
+        transactionDetails: unsignedTx.transaction,
+        warnings
       }
     ]
   }
@@ -448,7 +452,8 @@ export class BitcoinProtocol implements ICoinProtocol {
     offset: number,
     recipients: string[],
     values: string[],
-    fee: string
+    fee: string,
+    extras: unknown
   ): Promise<RawBitcoinTransaction> {
     const wrappedValues: BigNumber[] = values.map((value: string) => new BigNumber(value))
     const wrappedFee: BigNumber = new BigNumber(fee)
